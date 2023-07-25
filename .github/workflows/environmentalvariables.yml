@@ -1,0 +1,49 @@
+name: environmental_variable
+#Defining environmental variables
+env:
+    WORKSPACE_ENVIRONMENTAL_VARIABLE: 'WORKSPACE ENVIRONMENT VARIABLE'
+    OVER_RIDE: 'workflow'
+on: [push]
+
+jobs:
+  ubuntu:   #job-identifier
+    env:      #environment variable
+          JOB_ENVIRONMENT_VARIABLE: "JOB ENVIRONMENT FOR UBUNTU"
+          OVER_RIDE: "job"
+    runs-on: ubuntu-latest
+    steps:
+        - name: print custom environmental variables from ubuntu-latest
+          env:
+              STEP_ENVIRONMENT_VARIABLE: 'STEP ENVIRONMENT FOR BASH'
+              OVER_RIDE: 'step'
+          run: |
+             echo  " Accessing the environment variable using the shell syntax"
+             echo  "1. $WORKSPACE_ENVIRONMENT_VARIABLE"
+             echo  "2. $JOB_ENVIRONMENT_VARIABLE"
+             echo  "3. $STEP_ENVIRONMENT_VARIABLE"
+             echo  "4. $OVER_RIDE"
+             echo ""
+             echo "----------------------------------------------"
+             echo ""
+             echo "Accessing the environment variable using the YAML syntax"
+             echo "5. ${{ env.WORKSPACE_ENVIRONMENT_VARIABLE }}"
+             echp "6. ${{ env.JOBS_ENVIRONMENT_VARIABLE }}"
+             echo "7. ${{ env.STEP_ENVIRONMENT_VARIABLE }}"
+             echo "8. ${{ env.OVER_RIDE }}"
+  
+  #windows:  #job-idnetifier
+   #  env:
+    #     JOB_ENVIRONMENTAL_VARIABLE: 'Job environmental variable from windows environment'
+      #   OVER_RIDE: 'Job'
+    # runs-on: windows-latest
+     #steps:
+       # - name: print the environmental variable from windows environment"
+       #   env:
+        #      STEP_ENVIRONMENTAL_VARIABLE: 'step environment variable from windows environment'
+        #      OVER_RIDE: 'step'
+        #  run: |
+            #  echo "Accessing environment variable from windows environment"
+            #  echo "1. $env:"
+
+
+    
