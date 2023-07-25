@@ -1,0 +1,23 @@
+name: witharg
+run-name: Using with Arguments underneath the Uses Argument
+
+on:
+    push:
+        branches:
+            - main
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checking out the code
+              uses: actions/checkout@v2
+              with: 
+                    repository: apache/tomcat
+                    ref: master
+                    path: ./tomcat 
+            #java code set up
+            - name: set up java Jdk
+              uses: actions/setup-java@v2
+              with:
+                     java-version: '11'
+                     
