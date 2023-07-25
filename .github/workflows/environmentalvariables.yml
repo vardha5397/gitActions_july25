@@ -30,20 +30,30 @@ jobs:
              echo "6. ${{ env.JOB_ENVIRONMENT_VARIABLE }}"
              echo "7. ${{ env.STEP_ENVIRONMENT_VARIABLE }}"
              echo "8. ${{ env.OVER_RIDE }}"
-  
-  #windows:  #job-idnetifier
-   #  env:
-    #     JOB_ENVIRONMENTAL_VARIABLE: 'Job environmental variable from windows environment'
-      #   OVER_RIDE: 'Job'
-    # runs-on: windows-latest
-     #steps:
-       # - name: print the environmental variable from windows environment"
-       #   env:
-        #      STEP_ENVIRONMENTAL_VARIABLE: 'step environment variable from windows environment'
-        #      OVER_RIDE: 'step'
-        #  run: |
-            #  echo "Accessing environment variable from windows environment"
-            #  echo "1. $env:"
+   
+  windows:  #job-idnetifier
+       env:
+          JOB_ENVIRONMENT_VARIABLE: 'Job environmental variable from windows environment'
+          OVER_RIDE: 'Job'
+       runs-on: windows-latest
+       steps:
+          - name: print the environmental variable from windows environment"
+            env:
+               STEP_ENVIRONMENT_VARIABLE: 'step environment variable from windows environment'
+               OVER_RIDE: 'step'
+            run: |
+               echo "Accessing environment variable from windows environment"
+               echo "1. $Env:WORKSPACE_ENVIRONMENT_VARIABLE"
+               echo "2. $Env:"JOB_ENVIRONMENT_VARIABLE"
+               echo "3. $Env:STEP_ENVIRONMENT_VARIABLE"
+               echo "4. OVER_RIDE"
+               echo ""
+               echo "----------------------------------------"
+               echo ""
+               echo "5. ${{env.WORKSPACE_ENVIRONMENT_VARIABLE}}"
+               echo "6. ${{env.JOB_ENVIRONMENT_VARIABLE}}"
+               echo "7. ${{env.STEP_ENVIRONMENT_VARIABLE}}"
+               echo "8. ${{env.OVER_RIDE}}"
 
 
     
