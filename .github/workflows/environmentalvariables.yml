@@ -1,7 +1,7 @@
 name: environmental_variable
 #Defining environmental variables
 env:
-    WORKSPACE_ENVIRONMENTAL_VARIABLE: 'WORKSPACE ENVIRONMENT VARIABLE'
+    WORKSPACE_ENVIRONMENT_VARIABLE: 'WORKSPACE ENVIRONMENT VARIABLE'
     OVER_RIDE: 'workflow'
 on: [push]
 
@@ -27,7 +27,7 @@ jobs:
              echo ""
              echo "Accessing the environment variable using the YAML syntax"
              echo "5. ${{ env.WORKSPACE_ENVIRONMENT_VARIABLE }}"
-             echo "6. ${{ env.JOBS_ENVIRONMENT_VARIABLE }}"
+             echo "6. ${{ env.JOB_ENVIRONMENT_VARIABLE }}"
              echo "7. ${{ env.STEP_ENVIRONMENT_VARIABLE }}"
              echo "8. ${{ env.OVER_RIDE }}"
   
