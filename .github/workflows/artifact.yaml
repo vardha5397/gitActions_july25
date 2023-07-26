@@ -40,3 +40,24 @@ jobs:
       with:
         name: my-artifacts
         path: artifactsdirectory
+
+        
+  download_artifact:
+              runs-on: ubuntu-latest
+          
+              steps:
+              - name: Checkout code
+                uses: actions/checkout@v2
+          
+              - name: Download Artifacts
+                uses: actions/download-artifact@v2
+                with:
+                  name: my-artifacts  # The name of the artifact to download
+          
+              - name: List Downloaded Artifacts
+                run: |
+                  # List the contents of the downloaded artifacts directory
+                  ls ${{ github.workspace }}/my-artifacts
+          
+              # Add more steps to process or use the downloaded artifacts
+          
