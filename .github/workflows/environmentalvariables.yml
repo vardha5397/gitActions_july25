@@ -43,10 +43,10 @@ jobs:
                OVER_RIDE: 'step'
             run: |
                echo "Accessing environment variable from windows environment"
-               echo "1. $(Env:WORKSPACE_ENVIRONMENT_VARIABLE)"
-               echo "2. $(Env:"JOB_ENVIRONMENT_VARIABLE)"
-               echo "3. $(Env:STEP_ENVIRONMENT_VARIABLE)"
-               echo "4. $(Env:OVER_RIDE)"
+               echo "1. ${Env:WORKSPACE_ENVIRONMENT_VARIABLE}"
+               echo "2. ${Env:"JOB_ENVIRONMENT_VARIABLE}"
+               echo "3. ${Env:STEP_ENVIRONMENT_VARIABLE}"
+               echo "4. ${Env:OVER_RIDE}"
                echo ""
                echo "----------------------------------------"
                echo ""
