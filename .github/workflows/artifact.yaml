@@ -1,0 +1,31 @@
+name: Artifact 
+run-name: Artifacts Demo
+
+on: [push]
+
+jobs:
+    build:
+        name: Artifacts Demo
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checking out Code
+              uses: actions/checkout@v2
+            - name: Making directory
+              run: |
+                mkdir workingdirectory
+                echo "hello" > hello.html
+                echo "world" > world.html
+                mkdir artifactsdirectory
+                cp workingdirectory artifactdirectory
+     
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+             - name: uploading artifact
+               uses: actions/upload-artifact@v2
+               with:
+                     name: my-artifact
+                     path: artifactsdirectory
+                     
+                            
