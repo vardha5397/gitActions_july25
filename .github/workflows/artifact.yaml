@@ -17,15 +17,20 @@ jobs:
                 echo "world" > world.html
                 mkdir artifactsdirectory
                 cp workingdirectory artifactdirectory
+            - name: uploading artifact
+              uses: actions/upload-artifact@v2
+              with:
+                    name: my-artifact
+                    path: artifactsdirectory
+                      
      
     deploy:
         needs: build
         runs-on: ubuntu-latest
         steps:
-             - name: uploading artifact
-               uses: actions/upload-artifact@v2
-               with:
-                     name: my-artifact
-                     path: artifactsdirectory
-                     
+            - name: downloading artifacts
+              uses: actions/download-artifact@v3
+              with:
+                    name: thisartifact
+             
                             
