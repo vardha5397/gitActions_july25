@@ -55,10 +55,10 @@ jobs:
                 with:
                   name: my-artifacts  # The name of the artifact to download
           
-         #     - name: List Downloaded Artifacts
-         #       run: |
-         #         # List the contents of the downloaded artifacts directory
-         #         ls ${{ github.workspace }}/my-artifacts
-         # 
-         #     # Add more steps to process or use the downloaded artifacts
+              - name: List Downloaded Artifacts
+                run: |
+                  # List the contents of the downloaded artifacts directory
+                  ls ${{ github.workspace }}/my-artifacts
+          
+              # Add more steps to process or use the downloaded artifacts
           
