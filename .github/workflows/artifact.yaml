@@ -1,36 +1,42 @@
-name: Artifact 
-run-name: Artifacts Demo
+name: Artifact Download and Upload
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-    build:
-        name: Artifacts Demo
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checking out Code
-              uses: actions/checkout@v2
-            - name: Making directory
-              run: |
-                mkdir workingdirectory
-                echo "hello" > hello.html
-                echo "world" > world.html
-                mkdir artifactsdirectory
-                cp workingdirectory artifactdirectory
-            - name: uploading artifact
-              uses: actions/upload-artifact@v2
-              with:
-                    name: my-artifact
-                    path: artifactsdirectory
-                      
-     
-    deploy:
-        needs: build
-        runs-on: ubuntu-latest
-        steps:
-            - name: downloading artifacts
-              uses: actions/download-artifact@v3
-              with:
-                    name: thisartifact
-             
-                            
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Create Working Directory
+      run: |
+        # Create a directory to store files
+        mkdir workingdirectory
+        echo "hello" > workingdirectory/hello.html
+        echo "world" > workingdirectory/world.html
+
+    - name: Create Artifacts Directory
+      run: |
+        # Create a directory to store artifacts
+        mkdir artifactsdirectory
+
+    - name: Copy Files to Artifacts Directory
+      run: |
+        # Copy files from workingdirectory to artifactsdirectory
+        cp -r workingdirectory/* artifactsdirectory/
+
+    - name: List Artifacts Directory
+      run: |
+        # List the contents of the artifacts directory
+        ls artifactsdirectory/
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifacts
+        path: artifactsdirectory
