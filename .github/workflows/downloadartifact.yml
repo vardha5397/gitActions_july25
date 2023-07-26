@@ -1,7 +1,7 @@
 name: Download Artifact Example
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
