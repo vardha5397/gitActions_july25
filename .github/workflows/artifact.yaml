@@ -16,7 +16,7 @@ jobs:
                 echo "hello" > hello.html
                 echo "world" > world.html
                 mkdir artifactsdirectory
-                cp workingdirectory artifactdirectory
+                cp workingdirectory/ artifactdirectory/
             - name: uploading artifact
               uses: actions/upload-artifact@v2
               with:
